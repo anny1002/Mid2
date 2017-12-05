@@ -9,6 +9,13 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private final int REQUEST_BACK=102;
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_BACK) {
+            Toast.makeText(this,"特殊功能",Toast.LENGTH_LONG).show();
+        }
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -23,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void func3(View view){
         Intent F3=new Intent(this,Func3Activity.class);
-        startActivity(F3);
+        startActivityForResult(F3,REQUEST_BACK);
     }
     public void func4(View view){
         Intent F4=new Intent(this,Func4Activity.class);
@@ -39,15 +46,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void func7(View view){
         Intent F7=new Intent(this,Func7Activity.class);
-        startActivity(F7);
+        startActivityForResult(F7,REQUEST_BACK);
     }
     public void func8(View view){
         Intent F8=new Intent(this,Func8Activity.class);
-        startActivity(F8);
+        startActivityForResult(F8,REQUEST_BACK);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+
 }
